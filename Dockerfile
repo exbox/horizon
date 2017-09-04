@@ -12,7 +12,7 @@ RUN apk --update add wget \
   autoconf \
   cyrus-sasl-dev \
   libgsasl-dev \
-  supervisor
+  supervisor \
   mysql-client
 
 RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql mcrypt tokenizer xml zip pcntl
