@@ -13,8 +13,9 @@ RUN apk --update add wget \
   cyrus-sasl-dev \
   libgsasl-dev \
   supervisor
+  mysql-client
 
-RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql mcrypt tokenizer xml
+RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql mcrypt tokenizer xml zip pcntl
 RUN pecl channel-update pecl.php.net && pecl install memcached && docker-php-ext-enable memcached
 
 RUN rm /var/cache/apk/* \
