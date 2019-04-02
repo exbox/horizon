@@ -1,25 +1,8 @@
-FROM php:7-alpine
-MAINTAINER Niels van Doorn <n.van.doorn@outlook.com>
+FROM exbox/workspace:latest
+RUN apt-get update && apt-get install -y supervisor
 
-RUN apk --update add wget \
-  curl \
-  git \
-  build-base \
-  libmemcached-dev \
-  libmcrypt-dev \
-  libxml2-dev \
-  zlib-dev \
-  autoconf \
-  cyrus-sasl-dev \
-  libgsasl-dev \
-  supervisor \
-  mysql-client
-
-RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql mcrypt tokenizer xml zip pcntl
-RUN pecl channel-update pecl.php.net && pecl install memcached && docker-php-ext-enable memcached
-
-RUN rm /var/cache/apk/* \
-    && mkdir -p /var/www
+#RUN rm /var/cache/apk/* \
+#    && mkdir -p /var/www
 
 COPY supervisord.conf /etc/supervisord.conf
 
