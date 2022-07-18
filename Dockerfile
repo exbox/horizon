@@ -1,4 +1,4 @@
-FROM exbox/workspace:latest
+FROM exbox/workspace:5.0
 RUN apt-get update && apt-get install -y supervisor
 
 #RUN rm /var/cache/apk/* \
